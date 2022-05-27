@@ -5,9 +5,9 @@
 .dropstart .dropdown-toggle {
     background-color: blue;
 }
-/* .edit-user {
-
-} */
+ td.user-name {
+     padding-bottom: 7px;
+ }
 
 .container {
     background-color: rgb(184, 184, 192);
@@ -62,4 +62,10 @@ tbody.user-data {
 
 tr.user-stroke {
     height: 60px;
+}
+
+.confirm-edit {
+    height: 38px;
+    position: relative;
+    bottom: 1px;
 }
