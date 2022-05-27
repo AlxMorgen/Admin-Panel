@@ -183,7 +183,7 @@ const editUser = (event) => {
   id = event.target.id;
   document.querySelector(
     ".user-name-id" + id
-  ).innerHTML = `<input class="edit-name" id="${id}" value="${userNameArr[id]}"/> <button id="${id}" class="btn btn-primary confirm-edit confirm-btn-id${id} "><img class="icon" id="${id}" src="../check.png"/></button>`;
+  ).innerHTML = `<input class="edit-name" id="${id}" value="${userNameArr[id]}"/> <button id="${id}" class="btn btn-primary confirm-edit confirm-btn-id${id} "><img class="icon" id="${id}" src="check.png"/></button>`;
   document.querySelector(".edit-btn-id" + id).classList.toggle("hidden-btn");
   document.querySelector(".btn-no-id" + id).classList.toggle("hidden-btn");
   document
