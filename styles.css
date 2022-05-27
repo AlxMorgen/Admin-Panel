@@ -1,0 +1,65 @@
+.dropstart .dropdown-toggle::before {
+    display: none;
+}
+
+.dropstart .dropdown-toggle {
+    background-color: blue;
+}
+/* .edit-user {
+
+} */
+
+.container {
+    background-color: rgb(184, 184, 192);
+}
+
+tbody.user-data {
+    vertical-align: middle;
+}
+
+.name-width {
+    min-width: 258px;
+}
+.hidden-btn {
+    display: none;
+}
+.table {
+    margin-bottom: 0;
+}
+.title {
+    background-color: white;
+    text-align: center;
+    margin-top: 55px;
+}
+
+.edit-name {
+    position: relative;
+    left: -4px;
+    bottom: -1px;
+    height: 38.28px;
+    background: rgba(232, 229, 229, 0.711);
+    border-radius: 5px;
+}
+.icon {
+    width: 21px;
+    position: relative;
+    z-index: index 0;
+}
+
+.no-btn {
+    width: 47px;
+}
+
+.sorting {
+    height: 16px;
+}
+
+.sorting-btn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+tr.user-stroke {
+    height: 58px;
+}
