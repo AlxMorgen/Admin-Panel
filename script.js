@@ -1,5 +1,5 @@
-const addTime = () => new Date();
 const userNameArr = ["John", "Michael", "David", "Anna"];
+const addTime = () => new Date();
 const month = () => {
   if (addTime().getMonth() + 1 < 10) {
     return "0" + (addTime().getMonth() + 1);
@@ -47,17 +47,19 @@ const addData = (list) => {
 
     <button class="edit-user edit-btn-id${el.id} btn btn-primary" id="${
           el.id
-        }"><img class="icon" id="${el.id}" src="edit.png"></img></button>
+        }"><img class="icon" id="${
+          el.id
+        }" src="./icons/edit.png"></img></button>
         
     <button class="no-btn  btn btn-primary hidden-btn btn-no-id${el.id}" id="${
           el.id
-        }"><img class="icon" id="${el.id}" src="x.png"/></button>
+        }"><img class="icon" id="${el.id}" src="./icons/x.png"/></button>
     
     </td>
     <td><button id="${
       el.id
     }" type="button" class="delete-user btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <img class="icon" id="${el.id}" src="trash.png"></img></button></td>
+    <img class="icon" id="${el.id}" src="./icons/trash.png"></img></button></td>
     
     </tr>`
     )
@@ -68,34 +70,6 @@ const addData = (list) => {
   [...document.querySelectorAll(".edit-user")].forEach((button) =>
     button.addEventListener("click", editUser.bind(this))
   );
-  // buttons sort name
-  [...document.querySelectorAll(".sort-name")].forEach((button) =>
-    button.addEventListener("click", sortNameAsc)
-  );
-
-  document
-    .querySelector(".sort-name-asc")
-    .addEventListener("click", sortNameDesc);
-  //buttons sort Number
-
-  [...document.querySelectorAll(".sort-num")].forEach((button) =>
-    button.addEventListener("click", sortNumAsc)
-  );
-  document
-    .querySelector(".sort-num-asc")
-    .addEventListener("click", sortNumDesc);
-  //buttons sort ID
-  [...document.querySelectorAll(".sort-id")].forEach((button) =>
-    button.addEventListener("click", sortIdAsc)
-  );
-  document.querySelector(".sort-id-asc").addEventListener("click", sortIdDesc);
-  // buttons sort date
-  [...document.querySelectorAll(".sort-date")].forEach((button) =>
-    button.addEventListener("click", sortDateAsc)
-  );
-  document
-    .querySelector(".sort-date-asc")
-    .addEventListener("click", sortDateDesc);
 };
 //  Add new user
 const addUser = () => {
@@ -122,13 +96,13 @@ const addUser = () => {
     
     <td>
 
-    <button class="edit-user edit-btn-id${id} btn btn-primary" id="${id}"><img class="icon" id="${id}" src="edit.png"></img></button>
+    <button class="edit-user edit-btn-id${id} btn btn-primary" id="${id}"><img class="icon" id="${id}" src="./icons/edit.png"></img></button>
         
-    <button class="no-btn  btn btn-primary hidden-btn btn-no-id${id}" id="${id}"><img class="icon" id="${id}" src="x.png"/></button>
+    <button class="no-btn  btn btn-primary hidden-btn btn-no-id${id}" id="${id}"><img class="icon" id="${id}" src="./icons/x.png"/></button>
     
     </td>
     <td><button id="${id}" type="button" class="delete-user btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <img class="icon" id="${id}" src="trash.png"></img></button></td>
+    <img class="icon" id="${id}" src="./icons/trash.png"></img></button></td>
    
     </tr>`;
   document.querySelector(".user-data").append(newUser);
@@ -187,7 +161,7 @@ const editUser = (event) => {
   id = event.target.id;
   document.querySelector(
     ".user-name-id" + id
-  ).innerHTML = `<input class="edit-name" id="${id}" value="${userNameArr[id]}"/> <button id="${id}" class="btn btn-primary confirm-edit confirm-btn-id${id} "><img class="icon" id="${id}" src="check.png"/></button>`;
+  ).innerHTML = `<input class="edit-name" id="${id}" value="${userNameArr[id]}"/> <button id="${id}" class="btn btn-primary confirm-edit confirm-btn-id${id} "><img class="icon" id="${id}" src="./icons/check.png"/></button>`;
   document.querySelector(".edit-btn-id" + id).classList.toggle("hidden-btn");
   document.querySelector(".btn-no-id" + id).classList.toggle("hidden-btn");
   document
@@ -229,17 +203,19 @@ const sortingAsc = (sort, btn, subBtn) => {
       (l = s1.toLowerCase()), (m = s2.toLowerCase());
       return l === m ? 0 : l > m ? 1 : -1;
     });
-
+  console.log(sort);
   document.querySelector(".user-data").innerHTML = sorting
     .map((el) => {
       searchEl = el;
       index = [...document.querySelectorAll(sort)].findIndex(
         (el) => el.innerHTML === searchEl
       );
+      id = users[index].id;
+
       arrSorting = [];
       arrSorting.push(
-        `<tr class="user-stroke user-stroke-id${index}">${
-          document.querySelector(".user-stroke-id" + index).innerHTML
+        `<tr class="user-stroke user-stroke-id${id}">${
+          document.querySelector(".user-stroke-id" + id).innerHTML
         }</tr>`
       );
       return arrSorting;
@@ -268,17 +244,18 @@ const sortingDesc = (sort, btn, subBtn, tBtn) => {
       (l = s1.toLowerCase()), (m = s2.toLowerCase());
       return l === m ? 0 : l < m ? 1 : -1;
     });
-
+  console.log(sort);
   document.querySelector(".user-data").innerHTML = sorting
     .map((el) => {
       searchEl = el;
       index = [...document.querySelectorAll(sort)].findIndex(
         (el) => el.innerHTML === searchEl
       );
+      id = users[index].id;
       arrSorting = [];
       arrSorting.push(
-        `<tr class="user-stroke user-stroke-id${index}">${
-          document.querySelector(".user-stroke-id" + index).innerHTML
+        `<tr class="user-stroke user-stroke-id${id}">${
+          document.querySelector(".user-stroke-id" + id).innerHTML
         }</tr>`
       );
       return arrSorting;
@@ -299,26 +276,6 @@ const sortingDesc = (sort, btn, subBtn, tBtn) => {
 
   document.querySelector(tBtn).classList.toggle("hidden-btn");
 };
-
-// Sort users using number
-
-const sortNumAsc = () => sortingAsc(".number", ".btn-num", ".num-asc");
-
-const sortNumDesc = () =>
-  sortingDesc(".number", ".btn-num", ".num-asc", ".num-desc");
-
-// Sort users using personal ID
-
-const sortIdAsc = () => sortingAsc(".user-id", ".btn-id", ".id-asc");
-
-const sortIdDesc = () =>
-  sortingDesc(".user-id", ".btn-id", ".id-asc", ".id-desc");
-// Sort users using Date
-
-const sortDateAsc = () => sortingAsc(".add-data", ".btn-date", ".date-asc");
-
-const sortDateDesc = () =>
-  sortingDesc(".add-data", ".btn-date", ".date-asc", ".date-desc");
 
 // Check sort button
 
@@ -392,10 +349,53 @@ const chkSort = () => {
   return;
 };
 
-// Sort user using Name
-const sortNameAsc = () => sortingAsc(".user-name", ".btn-name", ".name-asc");
+// Sort by Name
 
-const sortNameDesc = () =>
-  sortingDesc(".user-name", ".btn-name", ".name-asc", ".name-desc");
+[...document.querySelectorAll(".sort-name")].forEach((button) =>
+  button.addEventListener("click", () =>
+    sortingAsc(".user-name", ".btn-name", ".name-asc")
+  )
+);
+
+document
+  .querySelector(".sort-name-asc")
+  .addEventListener("click", () =>
+    sortingDesc(".user-name", ".btn-name", ".name-asc", ".name-desc")
+  );
+
+//buttons sort Number
+
+[...document.querySelectorAll(".sort-num")].forEach((button) =>
+  button.addEventListener("click", () =>
+    sortingAsc(".number", ".btn-num", ".num-asc")
+  )
+);
+document
+  .querySelector(".sort-num-asc")
+  .addEventListener("click", () =>
+    sortingDesc(".number", ".btn-num", ".num-asc", ".num-desc")
+  );
+//buttons sort ID
+[...document.querySelectorAll(".sort-id")].forEach((button) =>
+  button.addEventListener("click", () =>
+    sortingAsc(".user-id", ".btn-id", ".id-asc")
+  )
+);
+document
+  .querySelector(".sort-id-asc")
+  .addEventListener("click", () =>
+    sortingDesc(".user-id", ".btn-id", ".id-asc", ".id-desc")
+  );
+// buttons sort date
+[...document.querySelectorAll(".sort-date")].forEach((button) =>
+  button.addEventListener("click", () =>
+    sortingAsc(".add-data", ".btn-date", ".date-asc")
+  )
+);
+document
+  .querySelector(".sort-date-asc")
+  .addEventListener("click", () =>
+    sortingDesc(".add-data", ".btn-date", ".date-asc", ".date-desc")
+  );
 
 addData(users);
