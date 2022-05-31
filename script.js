@@ -203,7 +203,7 @@ const sortingAsc = (sort, btn, subBtn) => {
       (l = s1.toLowerCase()), (m = s2.toLowerCase());
       return l === m ? 0 : l > m ? 1 : -1;
     });
-  console.log(sort);
+
   document.querySelector(".user-data").innerHTML = sorting
     .map((el) => {
       searchEl = el;
@@ -244,7 +244,7 @@ const sortingDesc = (sort, btn, subBtn, tBtn) => {
       (l = s1.toLowerCase()), (m = s2.toLowerCase());
       return l === m ? 0 : l < m ? 1 : -1;
     });
-  console.log(sort);
+
   document.querySelector(".user-data").innerHTML = sorting
     .map((el) => {
       searchEl = el;
