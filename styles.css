@@ -9,9 +9,7 @@
      padding-bottom: 7px;
  }
 
-.container {
-    background-color: rgb(184, 184, 192);
-}
+
 
 tbody.user-data {
     vertical-align: middle;
@@ -24,12 +22,16 @@ tbody.user-data {
     display: none;
 }
 .table {
-    margin-bottom: 0;
+    border: solid;
+    background-color: rgb(185 182 187 / 9%);
 }
 .title {
     background-color: white;
     text-align: center;
     margin-top: 55px;
+    display: flex;
+    justify-content: left;
+   
 }
 
 .edit-name {
@@ -69,3 +71,11 @@ tr.user-stroke {
     position: relative;
     bottom: 1px;
 }
+
+.add-user {
+    background-color: #FFF;
+        display: flex;
+            justify-content: end;
+            
+        }
+

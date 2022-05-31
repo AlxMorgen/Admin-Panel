@@ -10,7 +10,10 @@
 </head>
 <body>
     <!-- User info table -->
-    <h1 class="title">Table of users</h1>
+    <div class="container title">
+<h1 >Users</h1>
+
+    </div>
     <div class="container">
         
         <table class="table" id="table">
@@ -33,13 +36,16 @@
                     <button class="sorting-btn sub-btn btn-name name-asc hidden-btn"><img class="sorting sort-name-asc" src="sort-down.png" /></button>
                     <button class="sorting-btn t-btn btn-name name-desc hidden-btn"><img class="sorting sort-name" src="sort-up.png" /></button>
                 </th>
-                <th>Edit</th>
-                <th>Delete</th>
                 <th>Date
                     <button class="sorting-btn first-sort-btn btn-date"><img class="sorting sort-date" src="sort.png" /></button>
-                    <button class="sorting-btn sub-btn btn-date date-asc hidden-btn"><img class="sorting sort-date-asc" src="sort-down.png" /></button>
-                    <button class="sorting-btn t-btn btn-date date-desc hidden-btn"><img class="sorting sort-date" src="sort-up.png" /></button>
+                    <button class="sorting-btn sub-btn btn-date date-asc hidden-btn"><img class="sorting sort-date-asc"
+                            src="sort-down.png" /></button>
+                    <button class="sorting-btn t-btn btn-date date-desc hidden-btn"><img class="sorting sort-date"
+                            src="sort-up.png" /></button>
                 </th>
+                <th>Edit</th>
+                <th>Delete</th>
+                
             </thead>
             <tbody class="user-data"></tbody>
         </table>
@@ -74,7 +80,7 @@
     <!-- Add new user -->
 
     
-    <div class="container">
+    <div class="container add-user">
 
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewUser">
         Add New User

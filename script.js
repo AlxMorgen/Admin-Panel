@@ -1,26 +1,26 @@
-const addTime = new Date();
+const addTime = () => new Date();
 const userNameArr = ["John", "Michael", "David", "Anna"];
 const month = () => {
-  if (addTime.getMonth() + 1 < 10) {
-    return "0" + (addTime.getMonth() + 1);
+  if (addTime().getMonth() + 1 < 10) {
+    return "0" + (addTime().getMonth() + 1);
   }
 };
 const minutes = () => {
-  if (addTime.getMinutes() < 10) {
-    return "0" + addTime.getMinutes();
+  if (addTime().getMinutes() < 10) {
+    return "0" + addTime().getMinutes();
   }
-  return addTime.getMinutes();
+  return addTime().getMinutes();
 };
 const seconds = (sum) => {
-  if (addTime.getSeconds() < 10) {
+  if (addTime().getSeconds() < 10) {
     return "0" + (addTime.getSeconds() + sum);
   }
-  return addTime.getSeconds() + sum;
+  return addTime().getSeconds() + sum;
 };
 const users = userNameArr.map((userName, index) => ({
   id: index,
   userName: userName,
-  date: `${addTime.getDate()}.${month()}.${addTime.getFullYear()} ${addTime.getHours()}:${minutes()}:${seconds(
+  date: `${addTime().getDate()}.${month()}.${addTime().getFullYear()} ${addTime().getHours()}:${minutes()}:${seconds(
     index
   )}`,
 
@@ -41,6 +41,7 @@ const addData = (list) => {
     <td class="number" style="min-width: 60px;">${index + 1}</td>
     <td class="user-id user-id${el.id}">${el.persID}</td>
     <td class="user-name user-name-id${el.id} name-width">${el.userName}</td>
+    <td class="add-data">${el.date}</td>
     
     <td>
 
@@ -57,7 +58,7 @@ const addData = (list) => {
       el.id
     }" type="button" class="delete-user btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <img class="icon" id="${el.id}" src="trash.png"></img></button></td>
-    <td class="add-data">${el.date}</td>
+    
     </tr>`
     )
     .join(" ");
@@ -102,7 +103,9 @@ const addUser = () => {
   users.push({
     id: userNameArr.length - 1,
     userName: document.querySelector(".input-new-name").value,
-    date: Date().replace("GMT+0300 (Москва, стандартное время)", ""),
+    date: `${addTime().getDate()}.${month()}.${addTime().getFullYear()} ${addTime().getHours()}:${minutes()}:${seconds(
+      0
+    )}`,
     persID: getRandomInt(11111, 99999),
   });
   document.querySelector(".input-new-name").value = "";
@@ -115,6 +118,7 @@ const addUser = () => {
     <td class="number" style="min-width: 60px;">${users.length}</td>
     <td class="user-id user-id${id}">${users[id].persID}</td>
     <td class="user-name user-name-id${id} name-width">${users[id].userName}</td>
+     <td class="add-data">${users[id].date}</td>
     
     <td>
 
@@ -125,7 +129,7 @@ const addUser = () => {
     </td>
     <td><button id="${id}" type="button" class="delete-user btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <img class="icon" id="${id}" src="trash.png"></img></button></td>
-    <td class="add-data">${users[id].date}</td>
+   
     </tr>`;
   document.querySelector(".user-data").append(newUser);
   [...document.querySelectorAll(".delete-user")].forEach((button) =>
